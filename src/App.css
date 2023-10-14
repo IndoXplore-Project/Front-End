@@ -3,13 +3,17 @@
 /* ################# Setting Variabel css ################# */
 :root {
   --header-height: 3rem;
+
+  /* HSL color mode */
   --hue-color: 190;
-  --first-color: #019693;
-  --title-color: #14505c;
-  --text-color: #196d80;
-  --text-color-light: #01cbc7;
+  --first-color: hsl(var(--hue-color), 64%, 22%);
+  --first-color-second: hsl(var(--hue-color), 64%, 22%);
+  --first-color-alt: hsl(var(--hue-color), 64%, 15%);
+  --title-color: hsl(var(--hue-color), 64%, 18%);
+  --text-color: hsl(var(--hue-color), 24%, 35%);
+  --text-color-light: hsl(var(--hue-color), 8%, 60%);
   --input-color: hsl(var(--hue-color), 24%, 97%);
-  --body-color: #fafeff;
+  --body-color: hsl(var(--hue-color), 100%, 99%);
   --white-color: #fff;
   --scroll-bar-color: hsl(var(--hue-color), 12%, 90%);
   --scroll-thumb-color: hsl(var(--hue-color), 12%, 75%);
@@ -67,7 +71,7 @@ html {
 }
 
 body {
-  /* margin: var(--header-height) 0 0 0; */
+  margin: var(--header-height) 0 0 0;
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
   background-color: var(--body-color);
@@ -90,8 +94,44 @@ a {
   text-decoration: none;
 }
 
+.container {
+  max-width: 968px;
+  margin-left: var(--mb-2-5);
+  margin-right: var(--mb-2-5);
+}
+
 .rating {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    margin: 0;
+  }
+}
+
+@media screen and (min-height: 721px) {
+  body {
+    margin: 0;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

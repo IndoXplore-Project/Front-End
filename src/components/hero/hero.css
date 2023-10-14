@@ -1,0 +1,140 @@
+.hero_img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  object-position: 83%;
+}
+
+.hero_container {
+  position: relative;
+  height: calc(100vh - var(--header-height));
+  align-content: center;
+  row-gap: 3rem;
+}
+
+.hero_data-subtitle,
+.hero_data-title,
+.hero_social-link,
+.hero_info {
+  color: var(--white-color);
+}
+
+.hero_data-subtitle {
+  display: block;
+  font-weight: var(--font-medium);
+  margin-bottom: var(--mb-0-75);
+  max-width: 712px;
+}
+
+.hero_data-title {
+  font-size: var(--biggest-font-size);
+  font-weight: var(--font-semi-bold);
+  margin-bottom: var(--mb-1);
+}
+
+.hero_data-desc {
+  color: #f4f4f4;
+  margin-bottom: var(--mb-2-5);
+  max-width: 585px;
+}
+
+.hero_social {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5rem;
+}
+
+.hero_social-link {
+  font-size: 1.2rem;
+  width: max-content;
+}
+
+.hero_info {
+  background-color: var(--first-color);
+  display: flex;
+  padding: 1.5rem 1rem;
+  align-items: center;
+  column-gap: 0.5rem;
+  position: absolute;
+  right: 0;
+  bottom: 1rem;
+  width: 228px;
+}
+
+.hero_info-title {
+  display: block;
+  font-size: var(--small-font-size);
+  font-weight: var(--font-semi-bold);
+  margin-bottom: var(--mb-0-75);
+}
+
+.hero_info-button {
+  font-size: var(--smaller-font-size);
+}
+
+.hero_info-overlay {
+  overflow: var(--img-hidden);
+}
+
+.hero_info-img {
+  width: 145px;
+  transition: var(--img-transition);
+}
+
+.hero_info-img:hover {
+  transform: var(--img-scale);
+}
+
+@media screen and (max-width: 340px) {
+  .hero_info {
+    width: 190px;
+    padding: 1rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .hero_container {
+    height: 100vh;
+    grid-template-rows: 1.8fr 0.5fr;
+  }
+  .hero_data {
+    align-self: flex-end;
+  }
+  .hero_social {
+    flex-direction: row;
+    align-self: flex-end;
+    margin-bottom: 3rem;
+    column-gap: 2.5rem;
+  }
+  .hero_info {
+    bottom: 3rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .hero_container {
+    grid-template-rows: 2fr 0.5fr;
+  }
+  .hero_info {
+    width: 328px;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 2rem;
+  }
+  .hero_info-title {
+    font-size: var(--normal-font-size);
+  }
+  .hero_info-img {
+    width: 240px;
+    height: 120px;
+  }
+}
+
+@media screen and (min-height: 721px) {
+  .hero_container,
+  .hero_img {
+    height: 640px;
+  }
+}

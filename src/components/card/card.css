@@ -1,0 +1,45 @@
+h2 {
+  color: var(--white-color);
+}
+
+p {
+  font-size: var(--small-font-size);
+  color: #f4f4f4;
+}
+
+.card,
+.card_img {
+  height: 230px;
+  width: 200px;
+}
+
+.card {
+  position: relative;
+  overflow: var(--img-hidden);
+}
+
+.card:hover .card_img {
+  transform: var(--img-scale);
+}
+
+.card_img {
+  transition: var(--img-transition);
+}
+
+.card_data {
+  position: absolute;
+  bottom: 2rem;
+  left: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  color: var(--white-color);
+}
+
+.arrow-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: var(--first-color);
+  padding: 0.75rem 1.25rem;
+}

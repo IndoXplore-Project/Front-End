@@ -1,0 +1,29 @@
+.destination_container {
+  grid-template-columns: repeat(2, max-content);
+  justify-content: center;
+}
+
+@media screen and (max-width: 340px) {
+  .destination_container {
+    grid-template-columns: max-content;
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 568px) {
+  .destination_container {
+    grid-template-columns: repeat(3, max-content);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .destination_container {
+    padding-top: 2rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .destination_container {
+    gap: 3rem 2rem;
+  }
+}

@@ -4,17 +4,6 @@ import cardImg from "./../../assets/img/card-img.jpg";
 import Card from "../card/Card";
 
 function Destination() {
-  // const sr = ScrollReveal({
-  //   distance: "60px",
-  //   duration: 2800,
-  //   reset: true,
-  // });
-
-  // sr.reveal(`.card.destination_card`, {
-  //   origin: "top",
-  //   interval: 100,
-  // });
-
   const cardData = [
     {
       img: cardImg,

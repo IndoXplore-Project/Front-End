@@ -5,21 +5,6 @@ import aboutImg2 from "../../assets/img/about-img-2.jpg";
 import { ButtonPrimary } from "../button/Button";
 
 function About() {
-  // const sr = ScrollReveal({
-  //   distance: "60px",
-  //   duration: 2800,
-  //   reset: true,
-  // });
-
-  // sr.reveal(`.about_data`, {
-  //   origin: "left",
-  // });
-
-  // sr.reveal(`.about_img-overlay`, {
-  //   origin: "right",
-  //   interval: 100,
-  // });
-
   return (
     <section className="about section" id="about">
       <div className="about_container container grid">

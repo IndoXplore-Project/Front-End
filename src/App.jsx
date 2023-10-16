@@ -1,14 +1,16 @@
+import React, { useState } from "react";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import Home from "./pages/home/Home";
+import About from "./pages/about/About";
 
 function App() {
   const Layout = () => {
     return (
       <>
-        <Navbar />
+        <Navbar isHomePage={false} />
         <Outlet />
         <Footer />
       </>
@@ -18,11 +20,21 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
+      element: (
+        <div>
+          <Navbar isHomePage={true} />
+          <Home />
+          <Footer />
+        </div>
+      ),
+    },
+    {
+      path: "/",
       element: <Layout />,
       children: [
         {
-          path: "/",
-          element: <Home />,
+          path: "/about",
+          element: <About />,
         },
       ],
     },
@@ -31,7 +43,13 @@ function App() {
   // const router = createBrowserRouter([
   //   {
   //     path: "/",
-  //     element: <Article />,
+  //     element: (
+  //       <div>
+  //         <Navbar />
+  //         <Home />
+  //         <Footer />
+  //       </div>
+  //     ),
   //   },
   // ]);
 

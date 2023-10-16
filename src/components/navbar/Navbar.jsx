@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import "./navbar.css";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
-function Navbar() {
+function Navbar({ isHomePage }) {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
@@ -34,7 +34,12 @@ function Navbar() {
   };
 
   return (
-    <header className={`header ${scrolled ? "scrolled" : ""}`} id="header">
+    <header
+      className={`header ${isHomePage ? "header-home" : ""} ${
+        scrolled ? "scrolled" : ""
+      }`}
+      id="header"
+    >
       <nav className="nav container">
         <a href="#" className="nav_logo">
           IndoXplore

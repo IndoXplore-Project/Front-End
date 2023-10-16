@@ -4,6 +4,10 @@
   top: 0;
   left: 0;
   z-index: var(--z-fixed);
+  background: var(--first-color);
+}
+
+.header.header-home {
   background: linear-gradient(to top, transparent 0%, rgb(0, 0, 0, 0.1) 50%);
 }
 

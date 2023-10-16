@@ -1,11 +1,20 @@
 import React from "react";
 import "./destination.css";
 import cardImg from "./../../assets/img/card-img.jpg";
-import { AiOutlineStar } from "react-icons/ai";
-import { ButtonLinkArrow } from "./../button/Button";
 import Card from "../card/Card";
 
 function Destination() {
+  // const sr = ScrollReveal({
+  //   distance: "60px",
+  //   duration: 2800,
+  //   reset: true,
+  // });
+
+  // sr.reveal(`.card.destination_card`, {
+  //   origin: "top",
+  //   interval: 100,
+  // });
+
   const cardData = [
     {
       img: cardImg,
@@ -64,6 +73,7 @@ function Destination() {
             destination={data.destination}
             province={data.province}
             rate={data.rate}
+            className="destination_card"
           />
         ))}
       </div>

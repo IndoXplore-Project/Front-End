@@ -1,4 +1,8 @@
-.section-top {
+.article {
+  margin-bottom: var(--mb-2-5);
+}
+
+.article .section-top {
   align-items: start;
   padding: 0;
 }

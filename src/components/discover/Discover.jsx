@@ -31,7 +31,7 @@ function Discover() {
 
   return (
     <section className="discover section" id="discover">
-      <div className="section-top">
+      <div className="section-top container">
         <h2 className="section_title">
           Explore Each Tourism Destinations in Indonesia
         </h2>

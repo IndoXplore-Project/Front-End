@@ -1,8 +1,24 @@
-import React, { useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./navbar.css";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
 function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   const navRef = useRef();
 
   const showBar = () => {
@@ -18,7 +34,7 @@ function Navbar() {
   };
 
   return (
-    <header className="header" id="header">
+    <header className={`header ${scrolled ? "scrolled" : ""}`} id="header">
       <nav className="nav container">
         <a href="#" className="nav_logo">
           IndoXplore

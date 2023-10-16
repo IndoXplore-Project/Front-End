@@ -1,5 +1,6 @@
 .preview {
   background-color: #05161a;
+  margin-top: 4.5rem;
 }
 
 .preview_container {
@@ -23,12 +24,13 @@
   color: var(--white-color);
 }
 
-.rating,
-span {
+#preview_main .rating,
+#preview_main p,
+#preview_desc span {
   color: var(--first-color);
 }
 
-p {
+#preview_desc p {
   color: var(--body-color);
   font-size: var(--normal-font-size);
 }
@@ -43,7 +45,7 @@ p {
   color: var(--white-color);
   font-weight: var(--font-semi-bold);
   font-size: var(--h3-font-size);
-  height: 28px;
+  height: 2rem;
 }
 
 #preview_desc {
@@ -54,19 +56,25 @@ p {
   margin-bottom: var(--mb-1);
 }
 
-.button {
+.preview_data .button {
   width: fit-content;
 }
 
 @media screen and (min-width: 768px) {
   .preview {
-    padding: 2.5rem;
+    padding: 4rem;
   }
 
   .preview_container {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 2rem;
     align-items: center;
+  }
+}
+
+@media screen and (min-width: 968px) {
+  #dot {
+    height: 2.5rem;
   }
 }
 

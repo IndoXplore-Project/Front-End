@@ -5,6 +5,16 @@ import { BsInstagram, BsTwitter } from "react-icons/bs";
 import { AiOutlineYoutube } from "react-icons/ai";
 
 function Footer() {
+  // const sr = ScrollReveal({
+  //   distance: "60px",
+  //   duration: 2800,
+  //   reset: true,
+  // });
+
+  // sr.reveal(`.footer_data, .footer_rights`, {
+  //   origin: "top",
+  //   interval: 100,
+  // });
   return (
     <footer className="footer section">
       <div className="footer_container container grid">
@@ -77,9 +87,7 @@ function Footer() {
             <h3 className="footer_subtitle">Contacts</h3>
             <ul>
               <li className="footer_item">
-                <span className="footer_link">
-                  Fasilkom-Ti Universitas Sumatera Utara
-                </span>
+                <span className="footer_link">Fasilkom-Ti USU</span>
               </li>
               <li className="footer_item">
                 <span className="footer_link">IndoXplore@gmail.com</span>
@@ -90,8 +98,8 @@ function Footer() {
             </ul>
           </div>
         </div>
-
         <div className="footer_rights">
+          <div className="line"></div>
           <p className="footer_copy">
             &#169; 2023 IndoXplore. All rigths reserved.
           </p>

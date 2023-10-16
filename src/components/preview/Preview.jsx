@@ -5,6 +5,21 @@ import { ButtonPrimary } from "../button/Button";
 import previewImg from "./../../assets/img/preview-img.jpg";
 
 function Preview() {
+  // const sr = ScrollReveal({
+  //   distance: "60px",
+  //   duration: 2800,
+  //   reset: true,
+  // });
+
+  // sr.reveal(`.preview_img`, {
+  //   origin: "left",
+  // });
+
+  // sr.reveal(`.preview_data`, {
+  //   origin: "right",
+  //   interval: 100,
+  // });
+
   return (
     <section className="preview section">
       <div className="preview_container container grid">
@@ -17,7 +32,7 @@ function Preview() {
               <span>4,7</span>
             </div>
             <span id="dot">.</span>
-            <span>Historic sites</span>
+            <p>Historic sites</p>
           </div>
           <div id="preview_desc">
             <p>

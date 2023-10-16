@@ -3,9 +3,9 @@ import "./card.css";
 import { AiOutlineStar } from "react-icons/ai";
 import { ButtonLinkArrow } from "./../button/Button";
 
-function Card({ img, destination, province, rate }) {
+function Card({ img, destination, province, rate, className }) {
   return (
-    <div className="card">
+    <div className={`card ${className}`}>
       <img src={img} alt="" className="card_img" />
       <div className="rating">
         <AiOutlineStar />

@@ -155,6 +155,30 @@ button {
   gap: 0.5rem;
 }
 
+.hero_page_img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.card_container {
+  grid-template-columns: repeat(2, max-content);
+  justify-content: center;
+  gap: 3rem 3rem;
+}
+
+@media screen and (max-width: 468px) {
+  .card_container {
+    grid-template-columns: max-content;
+  }
+}
+
+@media screen and (min-width: 568px) {
+  .card_container {
+    grid-template-columns: repeat(2, max-content);
+    justify-content: flex-start;
+  }
+}
+
 @media screen and (min-width: 768px) {
   body {
     margin: 0;
@@ -166,6 +190,10 @@ button {
 
   .section-top {
     padding: 0;
+  }
+
+  .card_container {
+    grid-template-columns: repeat(3, max-content);
   }
 }
 
@@ -185,5 +213,9 @@ button {
   .container {
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .card_container {
+    grid-template-columns: repeat(4, max-content);
   }
 }

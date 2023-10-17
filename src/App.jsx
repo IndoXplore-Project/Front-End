@@ -5,6 +5,7 @@ import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import Home from "./pages/home/Home";
 import About from "./pages/about/About";
+import Category from "./pages/category/Category";
 
 function App() {
   const Layout = () => {
@@ -35,6 +36,16 @@ function App() {
         {
           path: "/about",
           element: <About />,
+        },
+      ],
+    },
+    {
+      path: "/",
+      element: <Layout />,
+      children: [
+        {
+          path: "/category",
+          element: <Category />,
         },
       ],
     },

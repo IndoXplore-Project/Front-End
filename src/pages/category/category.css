@@ -1,0 +1,25 @@
+.category {
+  margin-bottom: var(--mb-2-5);
+}
+
+.category_img {
+  height: 280px;
+  margin-bottom: var(--mb-2-5);
+}
+
+.category .section-top {
+  padding: 0;
+  align-items: flex-start;
+  text-align: start;
+  margin-bottom: var(--mb-2-5);
+}
+
+.category .section_desc {
+  max-width: fit-content;
+}
+
+@media screen and (min-width: 768px) {
+  .category_img {
+    height: 420px;
+  }
+}

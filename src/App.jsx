@@ -7,6 +7,8 @@ import Home from "./pages/home/Home";
 import About from "./pages/about/About";
 import Category from "./pages/category/Category";
 import Explore from "./pages/explore/Explore";
+import Article from "./pages/article/Article";
+import DetailArticle from "./pages/detail_article/DetailArticle";
 
 function App() {
   const Layout = () => {
@@ -57,6 +59,16 @@ function App() {
         {
           path: "/explore",
           element: <Explore />,
+        },
+      ],
+    },
+    {
+      path: "/",
+      element: <Layout />,
+      children: [
+        {
+          path: "/article",
+          element: <Article />,
         },
       ],
     },

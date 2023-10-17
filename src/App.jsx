@@ -72,6 +72,16 @@ function App() {
         },
       ],
     },
+    {
+      path: "/",
+      element: <Layout />,
+      children: [
+        {
+          path: "/detail-article",
+          element: <DetailArticle />,
+        },
+      ],
+    },
   ]);
 
   // const router = createBrowserRouter([

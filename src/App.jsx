@@ -6,6 +6,7 @@ import Footer from "./components/footer/Footer";
 import Home from "./pages/home/Home";
 import About from "./pages/about/About";
 import Category from "./pages/category/Category";
+import Explore from "./pages/explore/Explore";
 
 function App() {
   const Layout = () => {
@@ -46,6 +47,16 @@ function App() {
         {
           path: "/category",
           element: <Category />,
+        },
+      ],
+    },
+    {
+      path: "/",
+      element: <Layout />,
+      children: [
+        {
+          path: "/explore",
+          element: <Explore />,
         },
       ],
     },

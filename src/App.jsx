@@ -9,6 +9,7 @@ import Category from "./pages/category/Category";
 import Explore from "./pages/explore/Explore";
 import Article from "./pages/article/Article";
 import DetailArticle from "./pages/detail_article/DetailArticle";
+import DetailDestination from "./pages/detail_destination/DetailDestination";
 
 function App() {
   const Layout = () => {
@@ -82,20 +83,17 @@ function App() {
         },
       ],
     },
+    {
+      path: "/",
+      element: <Layout />,
+      children: [
+        {
+          path: "/detail-destination",
+          element: <DetailDestination />,
+        },
+      ],
+    },
   ]);
-
-  // const router = createBrowserRouter([
-  //   {
-  //     path: "/",
-  //     element: (
-  //       <div>
-  //         <Navbar />
-  //         <Home />
-  //         <Footer />
-  //       </div>
-  //     ),
-  //   },
-  // ]);
 
   return (
     <div className="app">

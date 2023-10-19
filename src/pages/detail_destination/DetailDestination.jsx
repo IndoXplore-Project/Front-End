@@ -5,7 +5,6 @@ import { AiOutlineStar } from "react-icons/ai";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
-import destinationImg from "./../../assets/img/destination-detail-img.jpg";
 import destinationGallery1 from "./../../assets/img/destination-gallery-1.jpeg";
 import destinationGallery2 from "./../../assets/img/destination-gallery-2.jpg";
 import destinationGallery3 from "./../../assets/img/destination-gallery-3.jpg";
@@ -78,7 +77,7 @@ function DetailDestination() {
       <h1>{detailDestination.name}</h1>
       <div className="detail_destination_main grid">
         <div className="detail_destination_content">
-          <img src={destinationImg} alt="" />
+          <img src={detailDestination.gallery[0]} alt="" />
           <div className="detail_destination_item">
             <h3>Description</h3>
             <p>{detailDestination.description}</p>

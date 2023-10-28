@@ -1,20 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
+import ScrollReveal from "scrollreveal";
 import "./footer.css";
 import { FaFacebookF } from "react-icons/fa";
 import { BsInstagram, BsTwitter } from "react-icons/bs";
 import { AiOutlineYoutube } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 function Footer() {
-  // const sr = ScrollReveal({
-  //   distance: "60px",
-  //   duration: 2800,
-  //   reset: true,
-  // });
-
-  // sr.reveal(`.footer_data, .footer_rights`, {
-  //   origin: "top",
-  //   interval: 100,
-  // });
   return (
     <footer className="footer section">
       <div className="footer_container container grid">
@@ -45,19 +37,19 @@ function Footer() {
             <h3 className="footer_subtitle">About</h3>
             <ul>
               <li className="footer_item">
-                <a href="" className="footer_link">
+                <Link to={"/about"} className="footer_link">
                   About Us
-                </a>
+                </Link>
               </li>
               <li className="footer_item">
-                <a href="" className="footer_link">
+                <Link to={"/about"} className="footer_link">
                   Vision & Mission
-                </a>
+                </Link>
               </li>
               <li className="footer_item">
-                <a href="" className="footer_link">
+                <Link to={"/about"} className="footer_link">
                   Services
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -66,19 +58,19 @@ function Footer() {
             <h3 className="footer_subtitle">Explore</h3>
             <ul>
               <li className="footer_item">
-                <a href="" className="footer_link">
+                <Link to={"/explore"} className="footer_link">
                   Destination
-                </a>
+                </Link>
               </li>
               <li className="footer_item">
-                <a href="" className="footer_link">
+                <Link to={"/explore"} className="footer_link">
                   Go Explore
-                </a>
+                </Link>
               </li>
               <li className="footer_item">
-                <a href="" className="footer_link">
+                <Link to={"/articles"} className="footer_link">
                   Articles
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

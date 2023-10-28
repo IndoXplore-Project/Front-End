@@ -1,28 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./article.css";
 import { ButtonLinkArrow } from "../../components/button/Button";
-import articleImg from "./../../assets/img/article-img.jpg";
+import { Link } from "react-router-dom";
 
 function Article() {
-  // example data
-  const articles = [
-    {
-      title: "Exploring the Enchanting Beauty of Bali",
-      content:
-        'Bali, often referred to as the "Island of the Gods," is a gem in Indonesia\'s vast archipelago. Known for its lush landscapes, rich cultural heritage, and pristine beaches, Bali offers an array of experiences...',
-      releaseDate: "February 2023",
-      tag: "Bali",
-      img: articleImg,
-    },
-    {
-      title: "Exploring the Enchanting Beauty of Yogyakarta",
-      content:
-        'Yogyakarta, often referred to as the "Island of the Gods," is a gem in Indonesia\'s vast archipelago. Known for its lush landscapes, rich cultural heritage, and pristine beaches, Yogyakarta offers an array of experiences...',
-      releaseDate: "February 2023",
-      tag: "Yogyakarta",
-      img: articleImg,
-    },
-  ];
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await fetch(
+          "https://indoxplore-project.cyclic.app/api/articles"
+        );
+        const json = await result.json();
+        setData(json.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="article_page section">
       <div className="section-top container">
@@ -35,18 +34,21 @@ function Article() {
         </p>
       </div>
       <div className="article_page_card_container container grid">
-        {articles.map((data, index) => (
-          <div className="article_page_card" key={index}>
-            <img src={data.img} alt="" />
-            <div className="article_page_content">
-              <p>{data.title}</p>
-              <ButtonLinkArrow
-                text={"Read More"}
-                style={{ color: "var(--first-color)" }}
-              />
+        {data &&
+          data.map((data) => (
+            <div className="article_page_card" key={data._id}>
+              <img src={data.articleImg} alt="" />
+              <div className="article_page_content">
+                <p>{data.title}</p>
+                <Link to={`/articles/details/${data._id}`}>
+                  <ButtonLinkArrow
+                    text={"Read More"}
+                    style={{ color: "var(--first-color)" }}
+                  />
+                </Link>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
     </div>
   );

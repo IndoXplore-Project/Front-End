@@ -1,28 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { format } from "date-fns";
 import "./article.css";
-import articleImg from "./../../assets/img/article-img.jpg";
 import { ButtonSecondary } from "../button/Button";
+import ScrollReveal from "scrollreveal";
+import { Link } from "react-router-dom";
 
 function Article() {
-  // example data
-  const articles = [
-    {
-      title: "Exploring the Enchanting Beauty of Bali",
-      content:
-        'Bali, often referred to as the "Island of the Gods," is a gem in Indonesia\'s vast archipelago. Known for its lush landscapes, rich cultural heritage, and pristine beaches, Bali offers an array of experiences...',
-      releaseDate: "February 2023",
-      tag: "Bali",
-      img: articleImg,
-    },
-    {
-      title: "Exploring the Enchanting Beauty of Yogyakarta",
-      content:
-        'Yogyakarta, often referred to as the "Island of the Gods," is a gem in Indonesia\'s vast archipelago. Known for its lush landscapes, rich cultural heritage, and pristine beaches, Yogyakarta offers an array of experiences...',
-      releaseDate: "February 2023",
-      tag: "Yogyakarta",
-      img: articleImg,
-    },
-  ];
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await fetch(
+          "https://indoxplore-project.cyclic.app/api/articles/latest"
+        );
+        const json = await result.json();
+        setData(json.data);
+
+        const sr = ScrollReveal({
+          distance: "60px",
+          duration: 2800,
+        });
+
+        sr.reveal(`.article_content`, {
+          origin: "left",
+        });
+
+        sr.reveal(`.article-img`, {
+          origin: "right",
+          interval: 100,
+        });
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <section className="article section" id="article">
@@ -31,22 +45,27 @@ function Article() {
       </div>
 
       <div className="article_container container">
-        {articles.map((data, index) => (
-          <div className="article_card" key={index}>
-            <div className="article_content">
-              <div className="article_data">
-                <span>{data.releaseDate}</span>
-                <span id="tag">{data.tag}</span>
+        {data &&
+          data.map((data) => (
+            <div className="article_card" key={data._id}>
+              <div className="article_content">
+                <div className="article_data">
+                  <span>
+                    {format(new Date(data.publicationDate), "MMMM yyyy")}
+                  </span>
+                  <span id="tag">{data.tag[0]}</span>
+                </div>
+                <div className="article_text">
+                  <h3>{data.title}</h3>
+                  <p>{data.content.split(" ").slice(0, 20).join(" ")}...</p>
+                </div>
+                <Link to={`/articles/details/${data._id}`}>
+                  <ButtonSecondary text={"Read More"} />
+                </Link>
               </div>
-              <div className="article_text">
-                <h3>{data.title}</h3>
-                <p>{data.content}</p>
-              </div>
-              <ButtonSecondary text={"Read More"} />
+              <img src={data.articleImg} alt="" className="article-img" />
             </div>
-            <img src={data.img} alt="" className="article-img" />
-          </div>
-        ))}
+          ))}
       </div>
     </section>
   );

@@ -1,9 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./navbar.css";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import { NavLink } from "react-router-dom";
 
 function Navbar({ isHomePage }) {
   const [scrolled, setScrolled] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
@@ -41,31 +43,31 @@ function Navbar({ isHomePage }) {
       id="header"
     >
       <nav className="nav container">
-        <a href="#" className="nav_logo">
-          IndoXplore
-        </a>
+        <NavLink to={"/"} className="nav_logo">
+          <b>IndoXplore</b>
+        </NavLink>
 
         <div className="nav_menu" id="nav-menu" ref={navRef}>
           <ul className="nav_list">
             <li className="nav_item">
-              <a href="#" className="nav_link active-link" onClick={linkAction}>
+              <NavLink to="/" className="nav_link" onClick={linkAction}>
                 Home
-              </a>
+              </NavLink>
             </li>
             <li className="nav_item">
-              <a href="#" className="nav_link" onClick={linkAction}>
+              <NavLink to="/about" className="nav_link" onClick={linkAction}>
                 About
-              </a>
+              </NavLink>
             </li>
             <li className="nav_item">
-              <a href="#" className="nav_link" onClick={linkAction}>
-                Discover
-              </a>
+              <NavLink to="/explore" className="nav_link" onClick={linkAction}>
+                Explore
+              </NavLink>
             </li>
             <li className="nav_item">
-              <a href="#" className="nav_link" onClick={linkAction}>
+              <NavLink to="/articles" className="nav_link" onClick={linkAction}>
                 Article
-              </a>
+              </NavLink>
             </li>
           </ul>
 

@@ -27,6 +27,8 @@
 
 .discover_img {
   transition: var(--img-transition);
+  width: 200px;
+  height: 280px;
 }
 
 .discover_img:hover {

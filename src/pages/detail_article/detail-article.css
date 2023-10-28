@@ -14,7 +14,6 @@
 }
 
 .article_info {
-  width: fit-content;
   display: flex;
   gap: 1rem;
   align-items: center;
@@ -33,6 +32,20 @@
 
 .content_article {
   text-align: justify;
+  margin-bottom: var(--mb-2);
+}
+
+.article_tag {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tag_item {
+  display: flex;
+  padding: 0.5rem 1rem;
+  align-items: flex-start;
+  border-radius: 1.5rem;
+  background: #eaeaea;
 }
 
 @media screen and (min-width: 768px) {

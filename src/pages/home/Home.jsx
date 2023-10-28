@@ -13,22 +13,18 @@ function Home() {
     const sr = ScrollReveal({
       distance: "60px",
       duration: 2800,
-      // reset: true,
     });
 
-    sr.reveal(
-      `.hero_data, .hero_social-link, .hero_info, .discover_container, .card, .footer_data, .footer_rights`,
-      {
-        origin: "top",
-        interval: 100,
-      }
-    );
+    sr.reveal(`.hero_data, .hero_social-link, .hero_info`, {
+      origin: "top",
+      interval: 100,
+    });
 
-    sr.reveal(`.about_data, .preview_img, .article_content`, {
+    sr.reveal(`.about_data`, {
       origin: "left",
     });
 
-    sr.reveal(`.about_img-overlay, .preview_data, .article-img`, {
+    sr.reveal(`.about_img-overlay`, {
       origin: "right",
       interval: 100,
     });

@@ -1,29 +1,53 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./detail-article.css";
-import detailArticleImg from "./../../assets/img/detail-article-img.jpg";
+import { useParams } from "react-router-dom";
+import { format } from "date-fns";
 
 function DetailArticle() {
-  const articleData = {
-    title: "Yogyakarta: Where History and Art Collide",
-    releaseDate: "June 2, 2023",
-    readTime: 5,
-    content: `Nestled in the heart of Java, Yogyakarta, often referred to as Jogja, is
-    a city that pulsates with a unique energy. It is a place where ancient
-    history and vibrant contemporary art seamlessly merge, creating an
-    atmosphere that is both evocative and inspiring.`,
-    poster: detailArticleImg,
-  };
+  const [article, setArticle] = useState(null);
+  const { id } = useParams();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await fetch(
+          `https://indoxplore-project.cyclic.app/api/articles/${id}`
+        );
+        const json = await result.json();
+        if (json.data && json.data.length > 0) {
+          setArticle(json.data[0]);
+        } else {
+          console.error("Article not found");
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [id]);
+
+  if (!article) {
+    return <div>Loading...</div>; // Menampilkan pesan loading saat data sedang dimuat
+  }
 
   return (
     <div className="detail_article container">
-      <h2 className="article_title">{articleData.title}</h2>
+      <h2 className="article_title">{article.title}</h2>
       <div className="article_info">
-        <p>{articleData.releaseDate}</p>
+        <p>{format(new Date(article.publicationDate), "MMMM yyyy")}</p>
         <p id="dot">.</p>
-        <p>{articleData.readTime} min read</p>
+        <p>{article.readTime} min read</p>
       </div>
-      <img src={articleData.poster} alt="" />
-      <p className="content_article">{articleData.content}</p>
+      <img src={article.articleImg} alt={article.title} />
+      <div className="content_article">{article.content}</div>
+      <div className="article_tag">
+        {article.tag.map((item, index) => (
+          <span key={index} className="tag_item">
+            {item}
+          </span>
+        ))}
+      </div>
     </div>
   );
 }

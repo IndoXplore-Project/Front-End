@@ -16,6 +16,7 @@
 
 .category .section_desc {
   max-width: fit-content;
+  text-transform: none;
 }
 
 @media screen and (min-width: 768px) {

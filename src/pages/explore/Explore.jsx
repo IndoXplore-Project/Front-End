@@ -1,31 +1,63 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./explore.css";
 import exploreImg from "./../../assets/img/explore-img.jpg";
-import cardImg from "./../../assets/img/card-img.jpg";
 import Card from "../../components/card/Card";
 import { ButtonPrimary } from "../../components/button/Button";
 
-function Explore() {
-  const cardData = [
-    {
-      img: cardImg,
-      destination: "destination 1",
-      province: "province 1",
-      rate: 4.5,
-    },
-    {
-      img: cardImg,
-      destination: "destination 2",
-      province: "province 2",
-      rate: 4.6,
-    },
-    {
-      img: cardImg,
-      destination: "destination 3",
-      province: "province 3",
-      rate: 4.7,
-    },
-  ];
+const Explore = () => {
+  const [categories, setCategories] = useState([]);
+  const [category, setCategory] = useState("Beach");
+  const [province, setProvince] = useState("");
+  const [destination, setDestination] = useState(null);
+  const [totalDestination, setTotalDestination] = useState(0);
+
+  const fetchCategoryData = async () => {
+    try {
+      const result = await fetch(
+        "https://indoxplore-project.cyclic.app/api/destination-categories"
+      );
+      const json = await result.json();
+
+      if (json.data) {
+        setCategories(json.data);
+      } else {
+        console.error("No data found for categories");
+      }
+    } catch (error) {
+      console.error("Error fetching categories:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchCategoryData();
+  }, []);
+
+  const handleSelectChange = (event) => {
+    setCategory(event.target.value);
+  };
+
+  const handleGetDestination = async () => {
+    try {
+      const formattedProvince = province.replace(/\b\w/g, (l) =>
+        l.toUpperCase()
+      );
+
+      const result = await fetch(
+        `https://indoxplore-project.cyclic.app/api/destinations/search?category=${category}&province=${formattedProvince}`
+      );
+      const json = await result.json();
+
+      if (json.data) {
+        setDestination(json.data);
+        setTotalDestination(json.totalDestinations);
+      } else {
+        console.error("No data found for destinations");
+        setDestination(null);
+      }
+    } catch (error) {
+      console.error("Error fetching destinations:", error);
+    }
+  };
 
   return (
     <div className="explore">
@@ -39,34 +71,54 @@ function Explore() {
           </p>
         </div>
         <div className="explore_input">
-          <select id="destination_type" name="destination_type">
-            <option value="beach">Beach</option>
-            <option value="mountain">Mountain</option>
-            <option value="lake">Lake</option>
-            <option value="national-park">National Park</option>
+          <select
+            id="destination_type"
+            name="destination_type"
+            value={category}
+            onChange={handleSelectChange}
+          >
+            {categories &&
+              categories.map((data) => (
+                <option value={data.name} key={data._id}>
+                  {data.name}
+                </option>
+              ))}
           </select>
-          <input type="text" placeholder="Province..." />
-          <ButtonPrimary text={"Search"} />
+          <input
+            type="text"
+            value={province}
+            onChange={(e) => setProvince(e.target.value)}
+            placeholder="Province..."
+          />
+          <ButtonPrimary text={"Search"} onClick={handleGetDestination} />
         </div>
       </div>
       <div className="section-top container section">
         <h2 className="section_title">Filter Your Search</h2>
-        <p className="section_desc">There are 3 Result Matching</p>
+        {destination ? (
+          <p className="section_desc">
+            There are {totalDestination} result matching.
+          </p>
+        ) : (
+          <p className="section_desc">No Data</p>
+        )}
       </div>
       <div className="card_container container grid">
-        {cardData.map((data, index) => (
-          <Card
-            key={index}
-            img={data.img}
-            destination={data.destination}
-            province={data.province}
-            rate={data.rate}
-            className="destination_card"
-          />
-        ))}
+        {destination &&
+          destination.map((data) => (
+            <Card
+              key={data._id}
+              id={data._id}
+              img={data.destinationImg}
+              destination={data.name}
+              province={data.province}
+              rate={data.rate}
+              className="destination_card"
+            />
+          ))}
       </div>
     </div>
   );
-}
+};
 
 export default Explore;

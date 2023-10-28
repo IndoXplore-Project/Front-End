@@ -1,10 +1,6 @@
 .detail_destination {
   padding-top: 4.5rem;
   margin-bottom: var(--mb-2-5);
-  /* display: flex;
-  justify-content: center;
-  flex-direction: column;
-  max-width: 680px; */
 }
 
 .detail_destination h1 {
@@ -71,6 +67,8 @@
   padding: 0.75rem 1.25rem;
   border-radius: 0.5rem;
   background: rgba(1, 150, 147, 0.21);
+  cursor: pointer;
+  color: var(--text-color);
 }
 
 .info_top .rating,
@@ -82,6 +80,10 @@
 .info_maps {
   width: 300px;
   height: 300px;
+}
+
+.leaflet-container {
+  z-index: -1;
 }
 
 .gallery-destination h2 {

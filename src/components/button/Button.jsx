@@ -2,18 +2,26 @@ import React from "react";
 import "./button.css";
 import { AiOutlineArrowRight } from "react-icons/ai";
 
-export function ButtonPrimary({ text }) {
-  return <button className="button primary">{text}</button>;
-}
-
-export function ButtonSecondary({ text }) {
-  return <button className="button secondary">{text}</button>;
-}
-
-export function ButtonLinkArrow({ text, style }) {
+export function ButtonPrimary(props) {
   return (
-    <button style={style} className="button link">
-      {text}
+    <button className="button primary" onClick={props.onClick}>
+      {props.text}
+    </button>
+  );
+}
+
+export function ButtonSecondary(props) {
+  return (
+    <button className="button secondary" onClick={props.onClick}>
+      {props.text}
+    </button>
+  );
+}
+
+export function ButtonLinkArrow(props) {
+  return (
+    <button style={props.style} className="button link" onClick={props.onClick}>
+      {props.text}
       <AiOutlineArrowRight />
     </button>
   );

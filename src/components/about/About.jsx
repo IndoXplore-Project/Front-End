@@ -3,6 +3,7 @@ import "./about.css";
 import aboutImg1 from "../../assets/img/about-img-1.jpg";
 import aboutImg2 from "../../assets/img/about-img-2.jpg";
 import { ButtonPrimary } from "../button/Button";
+import { Link } from "react-router-dom";
 
 function About() {
   return (
@@ -22,7 +23,9 @@ function About() {
             to curating the most comprehensive and reliable information about
             Indonesia's tourism places.
           </p>
-          <ButtonPrimary text={"Learn More"} />
+          <Link to={"/about"}>
+            <ButtonPrimary text={"Learn More"} />
+          </Link>
         </div>
 
         <div className="about_img">

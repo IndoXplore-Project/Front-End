@@ -1,33 +1,54 @@
-import React, { useEffect } from "react";
-import Swiper from "swiper/bundle";
-import "swiper/css/bundle";
+import React, { useState, useEffect } from "react";
+import Swiper from "swiper";
+import "swiper/swiper-bundle.css";
+
 import "./discover.css";
-import cardImg from "./../../assets/img/card-img.jpg";
+import ScrollReveal from "scrollreveal";
+import { Link } from "react-router-dom";
 
 function Discover() {
+  const [categories, setCategories] = useState(null);
+
   useEffect(() => {
-    new Swiper(".discover_container", {
-      effect: "coverflow",
-      grabCursor: true,
-      centeredSlides: true,
-      slidesPerView: "auto",
-      loop: true,
-      spaceBetween: 32,
-      coverflowEffect: {
-        rotate: 0,
-        slideShadows: false,
-      },
-    });
+    const fetchData = async () => {
+      try {
+        const result = await fetch(
+          "https://indoxplore-project.cyclic.app/api/destination-categories"
+        );
+        const json = await result.json();
+
+        if (json.data) {
+          setCategories(json.data);
+        } else {
+          console.error("No data found");
+        }
+
+        const sr = ScrollReveal({
+          distance: "60px",
+          duration: 2800,
+        });
+
+        sr.reveal(`.discover_container`, {
+          origin: "top",
+          interval: 100,
+        });
+
+        new Swiper(".discover_container", {
+          grabCursor: true,
+          slidesPerView: "auto",
+          spaceBetween: 32,
+        });
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
   }, []);
 
-  // example data
-  const categories = [
-    { category: "Beach", tours: 10, img: cardImg },
-    { category: "Mountain", tours: 9, img: cardImg },
-    { category: "Lake", tours: 12, img: cardImg },
-    { category: "National Park", tours: 20, img: cardImg },
-    { category: "Historic Place", tours: 12, img: cardImg },
-  ];
+  if (!categories) {
+    return <div></div>;
+  }
 
   return (
     <section className="discover section" id="discover">
@@ -43,17 +64,22 @@ function Discover() {
 
       <div className="discover_container container swiper">
         <div className="swiper-wrapper">
-          {categories.map((data, index) => (
-            <div className="discover_card swiper-slide" key={index}>
-              <img src={data.img} alt="" className="discover_img" />
-              <div className="discover_data">
-                <h2 className="discover_title">{data.category}</h2>
-                <span className="discover_description">
-                  {data.tours} tours available
-                </span>
-              </div>
-            </div>
-          ))}
+          {categories &&
+            categories.map((data) => (
+              <Link
+                className="discover_card swiper-slide"
+                key={data._id}
+                to={`/categories/${data._id}`}
+              >
+                <img src={data.categoryImg} alt="" className="discover_img" />
+                <div className="discover_data">
+                  <h2 className="discover_title">{data.name}</h2>
+                  <span className="discover_description">
+                    {data.totalDestinations} tours available
+                  </span>
+                </div>
+              </Link>
+            ))}
         </div>
       </div>
     </section>

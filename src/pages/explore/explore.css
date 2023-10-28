@@ -29,6 +29,10 @@
   color: #f4f4f4;
 }
 
+.explore .section_desc {
+  text-transform: none;
+}
+
 .explore_input {
   display: flex;
   flex-direction: column;

@@ -5,6 +5,7 @@ import heroInfoImg from "./../../assets/img/hero-info-img.jpg";
 import { FaFacebookF } from "react-icons/fa";
 import { BsInstagram, BsTwitter } from "react-icons/bs";
 import { ButtonPrimary, ButtonLinkArrow } from "../button/Button";
+import { Link } from "react-router-dom";
 
 function Hero() {
   return (
@@ -21,7 +22,9 @@ function Hero() {
             From Bali's golden beaches to Yogyakarta's ancient temples, embark
             on a journey through Indonesia's most enchanting locales.{" "}
           </p>
-          <ButtonPrimary text={"Explore"} />
+          <Link to={`/explore`}>
+            <ButtonPrimary text={"Explore"} />
+          </Link>
         </div>
 
         <div className="hero_social">
@@ -38,8 +41,10 @@ function Hero() {
 
         <div className="hero_info">
           <div>
-            <span className="hero_info-title">5 best places to visit</span>
-            <ButtonLinkArrow text={"More"} style={{ color: "white" }} />
+            <span className="hero_info-title">6 best places to visit</span>
+            <a href="#destination">
+              <ButtonLinkArrow text={"More"} style={{ color: "white" }} />
+            </a>
           </div>
 
           <div className="hero_info-overlay">

@@ -48,7 +48,7 @@ function App() {
       element: <Layout />,
       children: [
         {
-          path: "/category",
+          path: "/categories/:id",
           element: <Category />,
         },
       ],
@@ -68,7 +68,7 @@ function App() {
       element: <Layout />,
       children: [
         {
-          path: "/article",
+          path: "/articles",
           element: <Article />,
         },
       ],
@@ -78,7 +78,7 @@ function App() {
       element: <Layout />,
       children: [
         {
-          path: "/detail-article",
+          path: "/articles/details/:id",
           element: <DetailArticle />,
         },
       ],
@@ -88,7 +88,7 @@ function App() {
       element: <Layout />,
       children: [
         {
-          path: "/detail-destination",
+          path: "/destinations/details/:id",
           element: <DetailDestination />,
         },
       ],

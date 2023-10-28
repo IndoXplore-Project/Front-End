@@ -1,14 +1,51 @@
 import React, { useState, useEffect } from "react";
-import Swiper from "swiper";
-import "swiper/swiper-bundle.css";
-
 import "./discover.css";
 import ScrollReveal from "scrollreveal";
 import { Link } from "react-router-dom";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function Discover() {
   const [categories, setCategories] = useState(null);
 
+  const settings = {
+    dots: true,
+    infinite: true,
+    arrows: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    swipeToSlide: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          centerMode: true,
+          centerPadding: "60px",
+        },
+      },
+    ],
+  };
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -31,12 +68,6 @@ function Discover() {
         sr.reveal(`.discover_container`, {
           origin: "top",
           interval: 100,
-        });
-
-        new Swiper(".discover_container", {
-          grabCursor: true,
-          slidesPerView: "auto",
-          spaceBetween: 32,
         });
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -62,12 +93,12 @@ function Discover() {
         </p>
       </div>
 
-      <div className="discover_container container swiper">
-        <div className="swiper-wrapper">
+      <div className="discover_container container">
+        <Slider {...settings}>
           {categories &&
             categories.map((data) => (
               <Link
-                className="discover_card swiper-slide"
+                className="discover_card"
                 key={data._id}
                 to={`/categories/${data._id}`}
               >
@@ -80,7 +111,7 @@ function Discover() {
                 </div>
               </Link>
             ))}
-        </div>
+        </Slider>
       </div>
     </section>
   );

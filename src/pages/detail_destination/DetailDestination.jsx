@@ -7,6 +7,8 @@ import "leaflet/dist/leaflet.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Icon } from "leaflet";
+import mapIcon from "./../../assets/img/map-icon.png";
 
 function DetailDestination() {
   const [destination, setDestination] = useState(null);
@@ -58,6 +60,11 @@ function DetailDestination() {
       },
     ],
   };
+
+  const customIcon = new Icon({
+    iconUrl: mapIcon,
+    iconSize: [38, 38],
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -186,6 +193,7 @@ function DetailDestination() {
             >
               <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
               <Marker
+                icon={customIcon}
                 position={[
                   destination.geoLocation.lat,
                   destination.geoLocation.long,

@@ -15,7 +15,6 @@ function Category() {
         );
         const json = await result.json();
         setCategory(json.data);
-        console.log(json.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }

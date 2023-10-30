@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
@@ -10,94 +10,28 @@ import Explore from "./pages/explore/Explore";
 import Article from "./pages/article/Article";
 import DetailArticle from "./pages/detail_article/DetailArticle";
 import DetailDestination from "./pages/detail_destination/DetailDestination";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
-  const Layout = () => {
-    return (
-      <>
-        <Navbar isHomePage={false} />
-        <Outlet />
-        <Footer />
-      </>
-    );
-  };
-
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: (
-        <div>
-          <Navbar isHomePage={true} />
-          <Home />
-          <Footer />
-        </div>
-      ),
-    },
-    {
-      path: "/",
-      element: <Layout />,
-      children: [
-        {
-          path: "/about",
-          element: <About />,
-        },
-      ],
-    },
-    {
-      path: "/",
-      element: <Layout />,
-      children: [
-        {
-          path: "/categories/:id",
-          element: <Category />,
-        },
-      ],
-    },
-    {
-      path: "/",
-      element: <Layout />,
-      children: [
-        {
-          path: "/explore",
-          element: <Explore />,
-        },
-      ],
-    },
-    {
-      path: "/",
-      element: <Layout />,
-      children: [
-        {
-          path: "/articles",
-          element: <Article />,
-        },
-      ],
-    },
-    {
-      path: "/",
-      element: <Layout />,
-      children: [
-        {
-          path: "/articles/details/:id",
-          element: <DetailArticle />,
-        },
-      ],
-    },
-    {
-      path: "/",
-      element: <Layout />,
-      children: [
-        {
-          path: "/destinations/details/:id",
-          element: <DetailDestination />,
-        },
-      ],
-    },
-  ]);
-
   return (
     <div className="app">
-      <RouterProvider router={router} />
+      <Router>
+        <ScrollToTop />
+        <Navbar isHomePage={true} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/categories/:id" element={<Category />} />
+          <Route path="/explore" element={<Explore />} />
+          <Route path="/articles" element={<Article />} />
+          <Route path="/articles/details/:id" element={<DetailArticle />} />
+          <Route
+            path="/destinations/details/:id"
+            element={<DetailDestination />}
+          />
+        </Routes>
+        <Footer />
+      </Router>
     </div>
   );
 }

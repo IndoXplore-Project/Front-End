@@ -1,10 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./navbar.css";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
-function Navbar({ isHomePage }) {
+function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +22,7 @@ function Navbar({ isHomePage }) {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
   const navRef = useRef();
 
   const showBar = () => {
@@ -37,7 +39,7 @@ function Navbar({ isHomePage }) {
 
   return (
     <header
-      className={`header ${isHomePage ? "header-home" : ""} ${
+      className={`header ${location.pathname === "/" ? "header-home" : ""} ${
         scrolled ? "scrolled" : ""
       }`}
       id="header"

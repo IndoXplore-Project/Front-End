@@ -28,7 +28,7 @@ function DetailArticle() {
   }, [id]);
 
   if (!article) {
-    return <div>Loading...</div>; // Menampilkan pesan loading saat data sedang dimuat
+    return <div></div>;
   }
 
   return (
@@ -40,11 +40,14 @@ function DetailArticle() {
         <p>{article.readTime} min read</p>
       </div>
       <img src={article.articleImg} alt={article.title} />
-      <div className="content_article">{article.content}</div>
+      <div
+        className="content_article"
+        dangerouslySetInnerHTML={{ __html: article.content }}
+      />
       <div className="article_tag">
         {article.tag.map((item, index) => (
           <span key={index} className="tag_item">
-            {item}
+            #{item}
           </span>
         ))}
       </div>

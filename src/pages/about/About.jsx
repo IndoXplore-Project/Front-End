@@ -12,7 +12,7 @@ function About() {
       </h3>
       <p className="about_page_desc">
         <span>
-          <b>IndoXplorer</b>
+          <b>IndoXplore</b>
         </span>{" "}
         is more than a website—it's a gateway to the wonders of Indonesia. We're
         a team of passionate travel enthusiasts dedicated to curating the most
@@ -20,11 +20,11 @@ function About() {
         Our goal is to make your journey through this diverse archipelago not
         only memorable but also seamless and filled with moments of awe. <br />
         <br />
-        IndoXplorer is your go-to online resource for discovering the
-        captivating beauty and cultural richness of Indonesia's tourism
-        destinations. Our platform is designed to provide comprehensive,
-        reliable, and up-to-date information about the top attractions,
-        landmarks, and hidden gems across the Indonesian archipelago.
+        IndoXplore is your go-to online resource for discovering the captivating
+        beauty and cultural richness of Indonesia's tourism destinations. Our
+        platform is designed to provide comprehensive, reliable, and up-to-date
+        information about the top attractions, landmarks, and hidden gems across
+        the Indonesian archipelago.
       </p>
       <div className="vision_mission grid">
         <div className="mission">
@@ -62,7 +62,7 @@ function About() {
         <h2>Join Us in Exploring Indonesia's Tourism Wonders!</h2>
         <p>
           Whether you're a first-time traveler or a seasoned explorer,
-          IndoXplorer is here to be your trusted companion in uncovering the
+          IndoXplore is here to be your trusted companion in uncovering the
           magic of Indonesia's top tourist destinations. Let us be your guide to
           an unforgettable Indonesian adventure.
         </p>

@@ -57,7 +57,12 @@ function Article() {
                 </div>
                 <div className="article_text">
                   <h3>{data.title}</h3>
-                  <p>{data.content.split(" ").slice(0, 20).join(" ")}...</p>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        data.content.split(" ").slice(0, 20).join(" ") + "...",
+                    }}
+                  />
                 </div>
                 <Link to={`/articles/details/${data._id}`}>
                   <ButtonSecondary text={"Read More"} />
